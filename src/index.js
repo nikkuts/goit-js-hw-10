@@ -38,7 +38,7 @@ function renderInfo ({flags, name, capital, population, ...languages}) {
     const marcupInfo = 
         `
         <div>
-        <img src=${flags.svg} alt='country flag'/>
+        <img src=${flags.svg} alt='flag of ${name.official}'/>
         <p>${name.official}</p>
         </div>
         <p>Capital: ${capital}</p>
