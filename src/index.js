@@ -17,8 +17,23 @@ function onSearchCountry (event) {
 
     if(!seachQuery) {
         return;
-    }
-    fetchCountries(seachQuery);
+    } else {
+    fetchCountries(seachQuery)
+    .then((data) => {
+        if(data.length > 10) { 
+            Notiflix.Notify.info("Too many matches found. Please enter a more specific name.");
+        } 
+        else if (data.length > 1) {
+            renderList(data);
+        } 
+        else {
+            renderInfo(data);
+        }  
+    })
+    .catch((error) => {
+        Notiflix.Notify.failure("Oops, there is no country with that name");
+    });
+    };
 };
 
 function renderList (countries) {
