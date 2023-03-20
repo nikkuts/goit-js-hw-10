@@ -2,10 +2,18 @@ const fetchCountries = (name) =>
      fetch(`https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages`)
     .then((response) => response.json())
     .then((data) => {
-        console.log(data);
+        if(data.length > 10) { 
+            Notiflix.Notify.info("Too many matches found. Please enter a more specific name.");
+        } 
+        else if (data.length > 1) {
+            renderList(data);
+        } 
+        else {
+            renderDescription(data);
+        }  
     })
     .catch((error) => {
-        console.error(error);
+        Notiflix.Notify.failure("Oops, there is no country with that name");
     });
 
 export {fetchCountries};
