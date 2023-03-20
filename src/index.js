@@ -46,9 +46,9 @@ function renderDescription ({flags, name, capital, population, languages}) {
         <img src=${flag} alt='country flag'/>
         <p>${country}</p>
         </div>
-        <p>${capital}</p>
-        <p>${population}</p>
-        <p>${language}</p>
+        <p>Capital: ${capital}</p>
+        <p>Population: ${population}</p>
+        <p>Languages: ${language}</p>
         `;
     ref.info.innerHTML = marcup;
 };
