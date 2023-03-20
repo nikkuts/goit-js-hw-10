@@ -27,7 +27,7 @@ function renderList (countries) {
         const country = name.official;
        `
         <li>
-        <img src=${flag} alt='country flag'/>
+        <img src=${flag} alt='${country} flag'/>
         <p>${country}</p>
         </li>
         `;
@@ -36,7 +36,7 @@ function renderList (countries) {
     ref.list.innerHTML = marcup;
 };
 
-function renderDescription ({flags, name, capital, population, languages}) {
+function renderInfo ({flags, name, capital, population, languages}) {
     const flag = flags.svg;
     const country = name.official;
     const language = '...languages';

@@ -9,7 +9,7 @@ const fetchCountries = (name) =>
             renderList(data);
         } 
         else {
-            renderDescription(data);
+            renderInfo(data);
         }  
     })
     .catch((error) => {
