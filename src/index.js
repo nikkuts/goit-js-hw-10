@@ -23,19 +23,29 @@ function onSearchCountry (event) {
 
 function renderList (countries) {
     const marcup = countries.map(({flags, name}) => {
-        return 
+        const flag = flags.svg;
+        const country = name.official;
         `
         <li>
-        <img src=${flags.svg} alt='country flag'/>
-        <p>${name.official}</p>
+        <img src=${flag} alt='country flag'/>
+        <p>${country}</p>
         </li>
         `;
     })
     .join('');
-
     ref.list.innerHTML = marcup;
 };
 
-function renderDescription (country) {
-    console.log(country);
+function renderDescription ({flags, name, capital, population, languages}) {
+    const marcup = 
+        `
+        <div>
+        <img src=${flags.svg} alt='country flag'/>
+        <p>${name.official}</p>
+        </div>
+        <p>${capital}</p>
+        <p>${population}</p>
+        <p>${languages}</p>
+        `;
+    ref.info.innerHTML = marcup;
 };
