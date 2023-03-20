@@ -15,25 +15,24 @@ ref.text.addEventListener("input", debounce(onSearchCountry, DEBOUNCE_DELAY));
 function onSearchCountry (event) {
     const seachQuery = ref.text.value.trim();
 
-    if(!seachQuery) {
+    if (!seachQuery) {
         return;
-    } else {
+    }
     fetchCountries(seachQuery)
     .then((data) => {
-        if(data.length > 10) { 
+        if (data.length > 10) { 
             Notiflix.Notify.info("Too many matches found. Please enter a more specific name.");
+            return;
         } 
-        else if (data.length > 1) {
-            renderList(data);
-        } 
-        else {
-            renderInfo(data);
-        }  
+        if (data.length > 1 && data.length <= 10) { 
+           renderList (data);
+           return; 
+        }
+        renderInfo (data);
     })
     .catch((error) => {
         Notiflix.Notify.failure("Oops, there is no country with that name");
     });
-    };
 };
 
 function renderList (countries) {
