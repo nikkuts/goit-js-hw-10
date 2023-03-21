@@ -18,9 +18,9 @@
 
 function fetchCountries (name) {
    return fetch(`https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages`)
-   .then((response) => response.json())
-   .then((data) => data)
-   .catch((error) => error);
+   .then((response) => response.json());
+   // .then((data) => data)
+   // .catch((error) => error);
 }; 
    
 export {fetchCountries};

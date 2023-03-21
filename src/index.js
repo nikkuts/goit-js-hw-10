@@ -3,7 +3,7 @@ import debounce from 'lodash.debounce';
 import { Notify } from "../node_modules/notiflix/build/notiflix-notify-aio";
 import {fetchCountries} from "./fetchCountries";
 
-const DEBOUNCE_DELAY = 300;
+const DEBOUNCE_DELAY = 1000;
 const ref = {
     text: document.querySelector('input#search-box'),
     list: document.querySelector('.country-list'),
@@ -28,7 +28,7 @@ function onSearchCountry (event) {
            renderList (data);
            return; 
         }
-        renderInfo (data);
+        renderInfo (data); 
     })
     .catch((error) => {
         Notiflix.Notify.failure("Oops, there is no country with that name");
@@ -36,16 +36,17 @@ function onSearchCountry (event) {
 };
 
 function renderList (countries) {
-    const marcupList = countries.map(({flags, name}) => {
+    countries.map(({flags, name}) => {
+        const marcupList =
        `
         <li>
         <img src=${flags.svg} alt='flag of ${name.official}'/>
         <p>${name.official}</p>
         </li>
         `;
+       return ref.list.insertAdjacentHTML('beforeend', marcupList);
     })
     .join('');
-    ref.list.innerHTML = marcupList;
 };
 
 function renderInfo ({flags, name, capital, population, ...languages}) {
@@ -59,5 +60,6 @@ function renderInfo ({flags, name, capital, population, ...languages}) {
         <p>Population: ${population}</p>
         <p>Languages: ${languages}</p>
         `;
-    ref.info.innerHTML = marcupInfo;
+        // ref.info.innerHTML = marcupInfo;
+    ref.info.insertAdjacentHTML('beforeend', marcupInfo);
 };
