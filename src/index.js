@@ -42,7 +42,7 @@ function renderList (countries) {
         const marcupList =
        `
         <li class="item">
-        <img src=${flags.svg} alt='flag of ${name.official}' width=30px />
+        <img src=${flags.svg} alt='flag of ${name.official}' width=40px />
         <span>${name.official}</span>
         </li>
         `;
@@ -55,7 +55,7 @@ function renderInfo ({flags, name, capital, population, languages}) {
     const marcupInfo = 
         `
         <div class="name">
-        <img src=${flags.svg} alt='flag of ${name.official}' width=50px />
+        <img src=${flags.svg} alt='flag of ${name.official}' width=70px />
         <span>${name.official}</span>
         </div>
         <p><span class="info">Capital:</span> ${capital}</p>
